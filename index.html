@@ -4,6 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Jin Sheng Cao, mechanical engineering student at the University of Maryland: robotics, space, defense and aerospace hardware portfolio.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jin Sheng Cao Portfolio">
+<meta property="og:description" content="Mechanical engineering portfolio from the University of Maryland: robotics, space, defense and aerospace hardware.">
+<meta property="og:url" content="https://jinshengcao.github.io/">
+<meta property="og:image" content="https://jinshengcao.github.io/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta property="og:image:alt" content="Jin Sheng Cao, engineering portfolio: mechanical engineering, University of Maryland">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="Jin Sheng Cao">
 <style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Jin Sheng Cao Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -141,7 +151,7 @@ figure.vid video{display:block;width:100%;height:100%;object-fit:cover;backgroun
 .notice{margin:16px 0 0;padding:10px 14px;border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--surface);font-size:14px;line-height:1.5;color:var(--muted)}
 .notice b{color:var(--ink);font-weight:600}
 .print-extra{display:none}
-@media print{div.print-extra{display:grid;gap:12px}figure.print-extra{display:flex!important}}
+@media print{div.print-extra{display:grid;gap:10px}figure.print-extra{display:flex!important}div.print-extra figcaption{font-size:12px;line-height:1.35}div.print-extra figure{gap:6px}#skills{break-inside:avoid}#leadership,#skills{padding-top:16px}#skills .sec-head{margin-bottom:10px}#skills .skills p{font-size:14px;line-height:1.45}#skills .skills>div{padding-top:12px}#leadership .card{padding:14px 16px;gap:8px}#leadership .card ul.pts{font-size:13.5px;gap:4px}#leadership .sec-head{margin-bottom:12px}#resume+p.label{display:none}footer{margin-top:10px!important;padding-top:8px}}
 /* Lightbox */
 .lb{position:fixed;inset:0;background:var(--scrim);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px 16px;z-index:10;cursor:zoom-out}
 .lb img{max-width:min(1100px,100%);max-height:80vh;object-fit:contain;background:#fff}
@@ -869,8 +879,10 @@ figure.vid video{display:block;width:100%;height:100%;object-fit:cover;backgroun
         <li><b>Validated the model against hand calculations:</b> support reactions exact, bending stress within 1%, web shear within about 1%, bottom glue shear within 6%.</li>
         <li>Found a <b>local glue stress peak (~2,400 psi)</b> next to the load point, meaning the glue may start cracking before the beam-theory failure load.</li>
         <li><b>Debugged</b> a support on the wrong axis (a 2,480 lbf fake axial force) and a 1 in span error, both caught by <b>checking reactions against statics</b>.</li>
-        <li><b>In progress:</b> a cohesive-zone glue debonding simulation (displacement-controlled, nonlinear) to predict the load where the glue actually lets go, then a physical test to compare.</li>
+        <li><b>Attempted a nonlinear cohesive-zone glue debonding model</b> (989 psi glue shear strength, displacement-controlled loading). Isolated the non-convergence to the top glue line with <b>Newton-Raphson residual plots</b> and applied stiffness, interface and stabilization fixes, so the first load increment converged. Later increments still diverged numerically at only ~4 psi glue stress, far below the glue strength, so the final prediction uses the validated linear model.</li>
       </ul>
+      <p class="obj"><span class="label">Final prediction (for the physical test)</span><br><b>Local glue cracking</b> likely starts next to the load at <b>≈ 730 lbf</b> (the 2,409 psi local peak at 1,770 lbf reaches the 989 psi glue strength at 1,770 × 989 / 2,409). <b>Full glue-line failure</b> on the short (8 in) side of the top glue line at <b>≈ 1,770 lbf</b>. Predicted failure range ≈ 730–1,770 lbf, most likely near the upper end, since a small local crack needs extra load to spread along the whole joint. Next most critical: web shear (1,956 lbf) and top-flange bending (1,983 lbf).</p>
+      <p class="obj"><span class="label">In progress</span><br>Physical test of the beam to compare the predicted and measured failure load and failure mode.</p>
       <div class="print-extra">
       <p class="sub">More from the Ansys model</p>
       <div class="plates" style="grid-template-columns:repeat(4,minmax(0,1fr));align-items:start">
